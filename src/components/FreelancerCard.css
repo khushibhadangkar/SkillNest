@@ -1,0 +1,194 @@
+.freelancer-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.freelancer-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-glow);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.freelancer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.freelancer-card:hover::before {
+  opacity: 1;
+}
+
+.freelancer-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+
+.freelancer-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.freelancer-card__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.freelancer-card__status--available {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.freelancer-card__status--limited {
+  background: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+}
+
+.freelancer-card__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.freelancer-card__info {
+  flex: 1;
+  position: relative;
+}
+
+.freelancer-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+.freelancer-card__role {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+.freelancer-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.freelancer-card__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.freelancer-card__reviews {
+  color: var(--color-text-tertiary);
+  font-weight: 400;
+}
+
+.freelancer-card__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.freelancer-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.freelancer-card__skill {
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.freelancer-card__skill--more {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-tertiary);
+}
+
+.freelancer-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+  position: relative;
+}
+
+.freelancer-card__rate {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.freelancer-card__rate-amount {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.freelancer-card__rate-period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.freelancer-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.freelancer-card__view {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.freelancer-card__view:hover {
+  color: var(--color-primary);
+}

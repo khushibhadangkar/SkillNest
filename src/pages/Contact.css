@@ -1,0 +1,101 @@
+/* ============================================
+   Contact Page Styles
+   ============================================ */
+
+.page-contact {
+  padding-top: 80px;
+}
+
+.contact-header {
+  padding: var(--space-16) 0 var(--space-12);
+  background: var(--gradient-section);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-title {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
+}
+
+.contact-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+}
+
+.contact-content {
+  padding: var(--space-16) var(--container-padding);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+/* Form Card */
+.contact-form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-form-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-8);
+}
+
+/* Info Cards */
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-fast);
+}
+
+.info-card:hover {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.info-card__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-card__title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.info-card__desc {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.mt-12 { margin-top: var(--space-12); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
