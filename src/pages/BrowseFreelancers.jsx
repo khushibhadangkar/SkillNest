@@ -77,7 +77,7 @@ export default function BrowseFreelancers() {
           {loading ? (
             <SkeletonList count={6} />
           ) : filteredFreelancers.length > 0 ? (
-            <div className="freelancers-grid">
+            <div className="grid grid--3">
               {filteredFreelancers.map((f, i) => (
                 <ScrollReveal key={f.id} delay={(i % 3) * 100}>
                   <FreelancerCard freelancer={f} />

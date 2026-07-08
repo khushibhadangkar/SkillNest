@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Star, MapPin, Briefcase, Calendar, CheckCircle, ArrowLeft, ExternalLink, Zap } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Button from '../components/Button';
 import ScrollReveal from '../components/ScrollReveal';
+import { useAppContext } from '../context/AppContext';
+import AuthModal from '../components/AuthModal';
 import useAnalytics from '../hooks/useAnalytics';
 import { getFreelancerById } from '../data/freelancers';
 import './FreelancerProfile.css';
@@ -11,6 +14,9 @@ export default function FreelancerProfile() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { trackHireClick } = useAnalytics();
+  const { user, isHired, hireFreelancer } = useAppContext();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isHiring, setIsHiring] = useState(false);
   const freelancer = getFreelancerById(id);
 
   if (!freelancer) {
@@ -24,6 +30,21 @@ export default function FreelancerProfile() {
 
   const colors = ['#6366F1', '#8B5CF6', '#06B6D4', '#EC4899', '#F59E0B', '#10B981'];
   const bgColor = colors[freelancer.id % colors.length];
+
+  const handleHire = () => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
+    
+    trackHireClick(freelancer.id, freelancer.name);
+    setIsHiring(true);
+    // Simulate API call
+    setTimeout(() => {
+      hireFreelancer(freelancer.id);
+      setIsHiring(false);
+    }, 1500);
+  };
 
   return (
     <div className="page-profile">
@@ -78,13 +99,14 @@ export default function FreelancerProfile() {
                 <span className="profile-rate__period">/hr</span>
               </div>
               <Button 
-                variant="primary" 
+                variant={isHired(freelancer.id) ? "secondary" : "primary"}
                 size="lg" 
                 fullWidth 
                 icon={Zap}
-                onClick={() => trackHireClick(freelancer.id, freelancer.name)}
+                onClick={handleHire}
+                disabled={isHiring || isHired(freelancer.id)}
               >
-                Hire {freelancer.name.split(' ')[0]}
+                {isHired(freelancer.id) ? 'Hired' : isHiring ? 'Processing...' : `Hire ${freelancer.name.split(' ')[0]}`}
               </Button>
             </div>
           </div>
@@ -210,6 +232,12 @@ export default function FreelancerProfile() {
           </ScrollReveal>
         </div>
       </div>
+      
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)} 
+        defaultMode="login" 
+      />
     </div>
   );
 }

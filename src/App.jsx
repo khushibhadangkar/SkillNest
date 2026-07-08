@@ -13,6 +13,7 @@ import PostProject from './pages/PostProject';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import ComingSoon from './pages/ComingSoon';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -40,6 +41,8 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/coming-soon" element={<ComingSoon />} />
+          <Route path="*" element={<ComingSoon />} />
         </Routes>
       </main>
 

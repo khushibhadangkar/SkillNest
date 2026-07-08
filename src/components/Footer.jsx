@@ -37,10 +37,10 @@ export default function Footer() {
               Connecting businesses with exceptional student freelancers and young professionals worldwide.
             </p>
             <div className="footer__social">
-              <a href="#" className="footer__social-link" aria-label="Social"><Share2 size={18} /></a>
-              <a href="#" className="footer__social-link" aria-label="Website"><Globe size={18} /></a>
-              <a href="#" className="footer__social-link" aria-label="Chat"><MessageCircle size={18} /></a>
-              <a href="#" className="footer__social-link" aria-label="Email"><Mail size={18} /></a>
+              <Link to="/coming-soon" className="footer__social-link" aria-label="Social"><Share2 size={18} /></Link>
+              <Link to="/coming-soon" className="footer__social-link" aria-label="Website"><Globe size={18} /></Link>
+              <Link to="/coming-soon" className="footer__social-link" aria-label="Chat"><MessageCircle size={18} /></Link>
+              <Link to="/coming-soon" className="footer__social-link" aria-label="Email"><Mail size={18} /></Link>
             </div>
           </div>
 
@@ -50,26 +50,26 @@ export default function Footer() {
             <Link to="/about" className="footer__link">About Us</Link>
             <Link to="/blog" className="footer__link">Blog</Link>
             <Link to="/contact" className="footer__link">Contact</Link>
-            <a href="#" className="footer__link">Careers</a>
-            <a href="#" className="footer__link">Press</a>
+            <Link to="/coming-soon" className="footer__link">Careers</Link>
+            <Link to="/coming-soon" className="footer__link">Press</Link>
           </div>
 
           <div className="footer__col">
             <h4 className="footer__col-title">For Clients</h4>
             <Link to="/browse" className="footer__link">Browse Talent</Link>
             <Link to="/post-project" className="footer__link">Post a Project</Link>
-            <a href="#" className="footer__link">How It Works</a>
-            <a href="#" className="footer__link">Enterprise</a>
-            <a href="#" className="footer__link">Trust & Safety</a>
+            <Link to="/coming-soon" className="footer__link">How It Works</Link>
+            <Link to="/coming-soon" className="footer__link">Enterprise</Link>
+            <Link to="/coming-soon" className="footer__link">Trust & Safety</Link>
           </div>
 
           <div className="footer__col">
             <h4 className="footer__col-title">For Freelancers</h4>
-            <a href="#" className="footer__link">Join as Freelancer</a>
-            <a href="#" className="footer__link">Find Projects</a>
-            <a href="#" className="footer__link">Resources</a>
-            <a href="#" className="footer__link">Community</a>
-            <a href="#" className="footer__link">Success Stories</a>
+            <Link to="/coming-soon" className="footer__link">Join as Freelancer</Link>
+            <Link to="/coming-soon" className="footer__link">Find Projects</Link>
+            <Link to="/coming-soon" className="footer__link">Resources</Link>
+            <Link to="/coming-soon" className="footer__link">Community</Link>
+            <Link to="/coming-soon" className="footer__link">Success Stories</Link>
           </div>
         </div>
 
@@ -78,8 +78,8 @@ export default function Footer() {
             © {currentYear} SkillNest. All rights reserved.
           </p>
           <div className="footer__legal">
-            <a href="#" className="footer__link">Privacy Policy</a>
-            <a href="#" className="footer__link">Terms of Service</a>
+            <Link to="/coming-soon" className="footer__link">Privacy Policy</Link>
+            <Link to="/coming-soon" className="footer__link">Terms of Service</Link>
             <a href="#" className="footer__link">Cookie Policy</a>
           </div>
         </div>

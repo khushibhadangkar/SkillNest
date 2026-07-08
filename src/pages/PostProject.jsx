@@ -4,6 +4,8 @@ import { ArrowRight, ArrowLeft, Check, Sparkles } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Button from '../components/Button';
 import ScrollReveal from '../components/ScrollReveal';
+import { useAppContext } from '../context/AppContext';
+import AuthModal from '../components/AuthModal';
 import useAnalytics from '../hooks/useAnalytics';
 import { categories } from '../data/categories';
 import './PostProject.css';
@@ -14,6 +16,8 @@ export default function PostProject() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const { user, addProject } = useAppContext();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -34,10 +38,16 @@ export default function PostProject() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulate API call
     setTimeout(() => {
+      addProject(formData);
       setIsSubmitting(false);
       setIsSuccess(true);
       trackPostProject(formData.category, formData.budget);
@@ -255,6 +265,12 @@ export default function PostProject() {
           </div>
         </div>
       </div>
+      
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)} 
+        defaultMode="login" 
+      />
     </div>
   );
 }

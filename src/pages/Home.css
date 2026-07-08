@@ -517,6 +517,17 @@
 
   .hero__stats {
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__actions a, 
+  .hero__actions button {
+    width: 100%;
   }
 
   .freelancers-grid,

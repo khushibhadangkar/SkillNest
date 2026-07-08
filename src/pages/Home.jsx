@@ -144,7 +144,7 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="freelancers-grid">
+          <div className="grid grid--3">
             {freelancers.slice(0, 6).map((f, i) => (
               <ScrollReveal key={f.id} delay={i * 100}>
                 <FreelancerCard freelancer={f} index={i} />
@@ -182,7 +182,7 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="categories-grid">
+          <div className="grid grid--4">
             {categories.map((cat, i) => (
               <ScrollReveal key={cat.id} delay={i * 80}>
                 <CategoryCard category={cat} index={i} />

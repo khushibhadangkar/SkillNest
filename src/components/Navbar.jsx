@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles } from 'lucide-react';
 
+import { useAppContext } from '../context/AppContext';
 import Button from './Button';
+import AuthModal from './AuthModal';
 import useAnalytics from '../hooks/useAnalytics';
 import './Navbar.css';
 
@@ -18,6 +20,8 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [authModal, setAuthModal] = useState({ isOpen: false, mode: 'login' });
+  const { user, logout } = useAppContext();
   const location = useLocation();
   const { trackNavClick } = useAnalytics();
 
@@ -60,11 +64,22 @@ export default function Navbar() {
         </div>
 
         <div className="navbar__actions">
-          <Link to="/browse">
-            <Button variant="primary" size="sm">
-              Hire Talent
-            </Button>
-          </Link>
+          {user ? (
+            <div className="navbar__user" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <img src={user.avatar} alt={user.name} style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
+              <button onClick={logout} style={{ fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Log Out</button>
+              <Link to="/browse">
+                <Button variant="primary" size="sm">Hire Talent</Button>
+              </Link>
+            </div>
+          ) : (
+            <>
+              <button onClick={() => setAuthModal({ isOpen: true, mode: 'login' })} style={{ fontSize: '14px', fontWeight: 500, marginRight: '16px' }}>Log In</button>
+              <Button variant="primary" size="sm" onClick={() => setAuthModal({ isOpen: true, mode: 'signup' })}>
+                Sign Up
+              </Button>
+            </>
+          )}
         </div>
 
         <button
@@ -91,14 +106,35 @@ export default function Navbar() {
           ))}
         </div>
         <div className="navbar__mobile-actions">
-          <Link to="/browse" style={{ width: '100%' }}>
-            <Button variant="primary" fullWidth>Hire Talent</Button>
-          </Link>
+          {user ? (
+            <>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                <img src={user.avatar} alt={user.name} style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
+                <div>
+                  <div style={{ fontWeight: 600 }}>{user.name}</div>
+                  <button onClick={logout} style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Log Out</button>
+                </div>
+              </div>
+              <Link to="/browse" style={{ width: '100%' }}>
+                <Button variant="primary" fullWidth>Hire Talent</Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Button variant="secondary" fullWidth onClick={() => { setMobileOpen(false); setAuthModal({ isOpen: true, mode: 'login' }); }}>Log In</Button>
+              <Button variant="primary" fullWidth onClick={() => { setMobileOpen(false); setAuthModal({ isOpen: true, mode: 'signup' }); }}>Sign Up</Button>
+            </>
+          )}
         </div>
       </div>
       <div
         className={`navbar__overlay ${mobileOpen ? 'navbar__overlay--visible' : ''}`}
         onClick={() => setMobileOpen(false)}
+      />
+      <AuthModal 
+        isOpen={authModal.isOpen} 
+        defaultMode={authModal.mode} 
+        onClose={() => setAuthModal({ ...authModal, isOpen: false })} 
       />
     </header>
   );
