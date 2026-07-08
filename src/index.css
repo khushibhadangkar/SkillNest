@@ -4,7 +4,7 @@
    Apple, Linear, Stripe, and Framer
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ---- CSS Custom Properties ---- */
 :root {
@@ -53,7 +53,7 @@
   --shadow-card-hover: 0 8px 40px rgba(99, 102, 241, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
 
   /* Typography */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -113,40 +113,7 @@
   --glass-blur: 20px;
 }
 
-/* ---- Dark Mode ---- */
-[data-theme="dark"] {
-  --color-bg: #0B0F1A;
-  --color-bg-secondary: #111827;
-  --color-bg-tertiary: #1E293B;
-  --color-surface: #151B2B;
-  --color-surface-hover: #1E293B;
-  --color-border: #1E293B;
-  --color-border-light: #1E293B;
 
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-tertiary: #64748B;
-  --color-text-inverse: #0F172A;
-
-  --color-primary-light: rgba(99, 102, 241, 0.15);
-  --color-primary-glow: rgba(99, 102, 241, 0.3);
-
-  --gradient-hero: linear-gradient(135deg, #0B0F1A 0%, #111827 30%, #0F172A 60%, #0B0F1A 100%);
-  --gradient-card: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.08) 100%);
-  --gradient-section: linear-gradient(180deg, #0B0F1A 0%, #111827 100%);
-  --gradient-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.1), transparent 40%);
-
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.3);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2), 0 6px 24px rgba(0, 0, 0, 0.15);
-  --shadow-card-hover: 0 8px 40px rgba(99, 102, 241, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
-
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(30, 41, 59, 0.5);
-}
 
 /* ---- Reset & Base ---- */
 *,

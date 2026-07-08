@@ -26,13 +26,7 @@
   padding: var(--space-16) var(--container-padding);
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-}
 
-/* Form Card */
 .contact-form-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -93,9 +87,4 @@
 .mt-12 { margin-top: var(--space-12); }
 .mb-6 { margin-bottom: var(--space-6); }
 
-@media (max-width: 960px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-}
+

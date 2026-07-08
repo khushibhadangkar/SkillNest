@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sparkles } from 'lucide-react';
-import DarkModeToggle from './DarkModeToggle';
+
 import Button from './Button';
 import useAnalytics from '../hooks/useAnalytics';
 import './Navbar.css';
@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { path: '/contact', label: 'Contact' },
 ];
 
-export default function Navbar({ isDark, onToggleDark }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -60,7 +60,6 @@ export default function Navbar({ isDark, onToggleDark }) {
         </div>
 
         <div className="navbar__actions">
-          <DarkModeToggle isDark={isDark} onToggle={onToggleDark} />
           <Link to="/browse">
             <Button variant="primary" size="sm">
               Hire Talent
@@ -92,7 +91,6 @@ export default function Navbar({ isDark, onToggleDark }) {
           ))}
         </div>
         <div className="navbar__mobile-actions">
-          <DarkModeToggle isDark={isDark} onToggle={onToggleDark} />
           <Link to="/browse" style={{ width: '100%' }}>
             <Button variant="primary" fullWidth>Hire Talent</Button>
           </Link>

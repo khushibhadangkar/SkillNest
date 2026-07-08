@@ -5,7 +5,6 @@ import {
   Send, Sparkles, Code, Palette, Brain, Briefcase
 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
-import AnimatedCounter from '../components/AnimatedCounter';
 import Button from '../components/Button';
 import FreelancerCard from '../components/FreelancerCard';
 import CategoryCard from '../components/CategoryCard';
@@ -14,8 +13,6 @@ import useAnalytics from '../hooks/useAnalytics';
 import { freelancers } from '../data/freelancers';
 import { categories } from '../data/categories';
 import './Home.css';
-
-const TRUSTED_LOGOS = ['Notion', 'Stripe', 'Vercel', 'Linear', 'Figma', 'Supabase'];
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -78,22 +75,6 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="hero__stats animate-fade-in stagger-4">
-              <div className="hero__stat">
-                <span className="hero__stat-value">500+</span>
-                <span className="hero__stat-label">Freelancers</span>
-              </div>
-              <div className="hero__stat-divider" />
-              <div className="hero__stat">
-                <span className="hero__stat-value">98%</span>
-                <span className="hero__stat-label">Satisfaction</span>
-              </div>
-              <div className="hero__stat-divider" />
-              <div className="hero__stat">
-                <span className="hero__stat-value">120+</span>
-                <span className="hero__stat-label">Projects</span>
-              </div>
-            </div>
           </div>
 
           <div className="hero__visual animate-fade-in stagger-3">
@@ -144,21 +125,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== TRUSTED BY ===== */}
-      <ScrollReveal>
-        <section className="trusted">
-          <div className="container">
-            <p className="trusted__label">Trusted by innovative startups worldwide</p>
-            <div className="trusted__logos">
-              {TRUSTED_LOGOS.map((name, i) => (
-                <div key={name} className="trusted__logo" style={{ animationDelay: `${i * 100}ms` }}>
-                  {name}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
 
       {/* ===== FEATURED FREELANCERS ===== */}
       <section className="section section--alt" id="featured">
@@ -278,40 +244,6 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ===== STATISTICS ===== */}
-      <section className="stats-section">
-        <div className="container">
-          <ScrollReveal>
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-item__value">
-                  <AnimatedCounter end={500} suffix="+" />
-                </div>
-                <p className="stat-item__label">Freelancers</p>
-              </div>
-              <div className="stat-item">
-                <div className="stat-item__value">
-                  <AnimatedCounter end={120} suffix="+" />
-                </div>
-                <p className="stat-item__label">Projects Completed</p>
-              </div>
-              <div className="stat-item">
-                <div className="stat-item__value">
-                  <AnimatedCounter end={98} suffix="%" />
-                </div>
-                <p className="stat-item__label">Client Satisfaction</p>
-              </div>
-              <div className="stat-item">
-                <div className="stat-item__value">
-                  <AnimatedCounter end={50} suffix="+" />
-                </div>
-                <p className="stat-item__label">Categories</p>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 

@@ -3,12 +3,7 @@ import SEOHead from '../components/SEOHead';
 import ScrollReveal from '../components/ScrollReveal';
 import './About.css';
 
-const TEAM = [
-  { name: 'Alex Rivera', role: 'Founder & CEO', avatar: 'https://i.pravatar.cc/150?img=11' },
-  { name: 'Sarah Chen', role: 'Head of Product', avatar: 'https://i.pravatar.cc/150?img=5' },
-  { name: 'Marcus Johnson', role: 'Head of Engineering', avatar: 'https://i.pravatar.cc/150?img=8' },
-  { name: 'Elena Rodriguez', role: 'Community Lead', avatar: 'https://i.pravatar.cc/150?img=9' },
-];
+
 
 export default function About() {
   return (
@@ -88,28 +83,6 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <ScrollReveal>
-            <div className="section__header">
-              <h2 className="section__title">Meet the <span className="gradient-text">Team</span></h2>
-              <p className="section__subtitle">The passionate people building SkillNest.</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="team-grid">
-            {TEAM.map((member, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div className="team-card">
-                  <img src={member.avatar} alt={member.name} className="team-card__img" />
-                  <h4 className="team-card__name">{member.name}</h4>
-                  <p className="team-card__role">{member.role}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

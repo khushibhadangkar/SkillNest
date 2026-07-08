@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { Mail, MessageSquare, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, MessageSquare, MapPin } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import Button from '../components/Button';
 import ScrollReveal from '../components/ScrollReveal';
 import FAQAccordion from '../components/FAQAccordion';
-import useAnalytics from '../hooks/useAnalytics';
 import './Contact.css';
 
 const FAQS = [
@@ -27,23 +24,6 @@ const FAQS = [
 ];
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle, submitting, success
-  const { trackContactForm } = useAnalytics();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus('submitting');
-    
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      trackContactForm();
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }, 1500);
-  };
-
   return (
     <div className="page-contact">
       <SEOHead 
@@ -62,74 +42,7 @@ export default function Contact() {
       </div>
 
       <div className="container contact-content">
-        <div className="contact-grid">
-          {/* Form */}
-          <ScrollReveal>
-            <div className="contact-form-card">
-              <h3 className="contact-form-title">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-group">
-                  <label className="form-label">Name</label>
-                  <input 
-                    type="text" 
-                    className="input" 
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Email</label>
-                  <input 
-                    type="email" 
-                    className="input" 
-                    placeholder="you@company.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Subject</label>
-                  <select 
-                    className="input"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                    required
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="support">General Support</option>
-                    <option value="sales">Sales & Enterprise</option>
-                    <option value="partnership">Partnership</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Message</label>
-                  <textarea 
-                    className="input textarea" 
-                    placeholder="How can we help?"
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    required
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  variant={status === 'success' ? 'secondary' : 'primary'} 
-                  fullWidth 
-                  icon={status === 'success' ? CheckCircle : Send}
-                  disabled={status !== 'idle'}
-                >
-                  {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'}
-                </Button>
-              </form>
-            </div>
-          </ScrollReveal>
 
-          {/* Info & FAQ */}
           <div className="contact-info-col">
             <ScrollReveal delay={100}>
               <div className="info-cards">
@@ -164,7 +77,6 @@ export default function Contact() {
               </div>
             </ScrollReveal>
           </div>
-        </div>
       </div>
     </div>
   );
