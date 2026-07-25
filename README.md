@@ -1,4 +1,5 @@
-# 🌟 SkillNest — Premium Freelance Marketplace
+# 🌟 SkillNest 
+Premium Freelance Marketplace
 
 SkillNest is a clean, modern, and high-performance React application designed to connect businesses, startups, and clients with top-tier young professionals and freelance talents. Built on React 19 and Vite 8, the platform is designed with a premium, responsive glassmorphism aesthetic and optimized for fast page loads and smooth micro-animations.
 
