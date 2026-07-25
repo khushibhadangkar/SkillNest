@@ -52,37 +52,5 @@ Here is a map of the repository's core directories and assets:
 
 ---
 
-## ⚡ Getting Started
-
-### 📋 Prerequisites
-
-Make sure you have [Node.js](https://nodejs.org/) installed (v18.x or above is recommended).
-
-### 🛠️ Installation & Setup
-
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Run Locally in Development Mode:**
-   ```bash
-   npm run dev
-   ```
-   Open your browser to `http://localhost:5173/` to view the live app.
-
-3. **Build the Application for Production:**
-   ```bash
-   npm run build
-   ```
-
-4. **Run Code Linting Checks:**
-   ```bash
-   npm run lint
-   ```
-
----
-
-## 🛡️ License
 
 This project is open-source and available under the MIT License.
