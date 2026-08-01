@@ -8,6 +8,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import Button from '../components/Button';
 import FreelancerCard from '../components/FreelancerCard';
 import CategoryCard from '../components/CategoryCard';
+import PremiumMembership from '../components/PremiumMembership';
 import SEOHead from '../components/SEOHead';
 import useAnalytics from '../hooks/useAnalytics';
 import { freelancers } from '../data/freelancers';
@@ -247,6 +248,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== PREMIUM MEMBERSHIP ===== */}
+      <PremiumMembership />
 
       {/* ===== NEWSLETTER ===== */}
       <section className="newsletter">
