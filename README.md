@@ -11,7 +11,6 @@ SkillNest is a clean, modern, and high-performance React application designed to
 - **📄 Comprehensive Freelancer Profiles:** Highlights freelancer biographies, active skillsets, client review portfolios, historical ratings, and direct contact options.
 - **📝 Project Brief Posting System:** Allows clients to construct detailed project descriptions, assign categories, and select specific budgets and delivery timelines (persisted securely using React state and LocalStorage).
 - **🔒 Integrated Authentication (Mock Flow):** Seamless user login/registration modal with client-side session management.
-- **🎨 Elite Dark & Light Mode Support:** One-click dynamic themes utilizing CSS custom properties for a polished user experience.
 - **⚡ Advanced UI/UX Animations:** High-end custom scroll progress bar, back-to-top behavior, category visual cards, dynamic testimonial carousels, and responsive FAQ accordions.
 - **🔍 SEO Optimization:** Structured meta-headers using a custom `<SEOHead>` component to improve search indexability on every page.
 
