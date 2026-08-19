@@ -41,7 +41,7 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: var(--gradient-cta);
+  background: var(--color-primary);
   color: white;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
 }
 
 .navbar__logo-text {
-  background: var(--gradient-text);
+  background: var(--color-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
