@@ -42,9 +42,9 @@ export default function PremiumMembership() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  console.log("isModalOpen:", isModalOpen);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const { trackEvent } = useAnalytics();
+  const { trackEvent, trackPurchase } = useAnalytics();
 
 const handleOpenModal = () => {
   document.body.style.overflow = 'hidden';
@@ -59,40 +59,69 @@ const handleOpenModal = () => {
 const handleCloseModal = () => {
   document.body.style.overflow = '';
   setIsModalOpen(false);
+  setIsSubmitting(false);
   setFullName('');
   setEmail('');
 };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // Fire GA4 custom event
-  trackEvent('premium_checkout_started', {
-    full_name: fullName,
-    email: email,
-    plan: 'SkillNest Premium',
-    price: 99,
-    currency: 'INR'
-  });
+    const trimmedName = fullName.trim();
+    const trimmedEmail = email.trim();
 
-  // 🔥 Unlock scrolling
-  document.body.style.overflow = '';
+    // Guard against validation errors or duplicate submissions
+    if (!trimmedName || !trimmedEmail || isSubmitting) {
+      return;
+    }
 
-  // Close modal
-  setIsModalOpen(false);
+    setIsSubmitting(true);
 
-  // Reset form
-  setFullName('');
-  setEmail('');
+    const transactionId = `SKILLNEST-${Date.now()}`;
 
-  // Show toast
-setToastMessage(
-  "Thank you! A secure payment link has been sent to your email."
-);
-  setTimeout(() => {
-    setToastMessage('');
-  }, 5000);
-};
+    // Fire GA4 custom event
+    trackEvent('premium_checkout_started', {
+      full_name: trimmedName,
+      email: trimmedEmail,
+      plan: 'SkillNest Premium',
+      price: 99,
+      currency: 'INR'
+    });
+
+    // Fire GA4 ecommerce purchase event
+    trackPurchase({
+      transaction_id: transactionId,
+      value: 99,
+      currency: 'INR',
+      items: [
+        {
+          item_id: 'premium_monthly',
+          item_name: 'SkillNest Premium',
+          price: 99,
+          quantity: 1
+        }
+      ]
+    });
+
+    // 🔥 Unlock scrolling
+    document.body.style.overflow = '';
+
+    // Close modal
+    setIsModalOpen(false);
+    setIsSubmitting(false);
+
+    // Reset form
+    setFullName('');
+    setEmail('');
+
+    // Show toast
+    setToastMessage(
+      "Thank you! A secure payment link has been sent to your email."
+    );
+    setTimeout(() => {
+      setToastMessage('');
+    }, 5000);
+  };
 
   return (
     <section className="premium-membership section" id="premium">
@@ -280,6 +309,7 @@ setToastMessage(
             size="lg"
             fullWidth
             className="premium-membership__btn"
+            disabled={isSubmitting}
           >
             Proceed to Payment
           </Button>

@@ -1,8 +1,12 @@
 export default function useAnalytics() {
   const trackEvent = (eventName, params = {}) => {
     /* GA4 tracking — logs in dev, sends to gtag in production */
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', eventName, params);
+    if (typeof window !== 'undefined') {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      } else if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+      }
     }
 
     if (import.meta.env.DEV) {
@@ -40,6 +44,9 @@ export default function useAnalytics() {
 
     trackScrollDepth: (depth) =>
       trackEvent('scroll_depth', { depth_percentage: depth }),
+
+    trackPurchase: (purchaseData) =>
+      trackEvent('purchase', purchaseData),
 
     trackEvent,
   };
